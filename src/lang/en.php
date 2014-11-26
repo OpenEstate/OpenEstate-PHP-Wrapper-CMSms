@@ -18,7 +18,7 @@
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
 $lang['moddescription'] = 'This module integrates <em>OpenEstate-PHP-Export</em> into a <em>CMS made simple</em> based website.';
-$lang['changelog'] = 'see <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-WordPress/blob/master/README.md#changelog" target="_blank">project description at GitHub</a>';
+$lang['changelog'] = 'see <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-CMSms/blob/master/README.md#changelog" target="_blank">project description at GitHub</a>';
 $lang['help'] = '<h3>What Does This Do?</h3>
 <p>
   OpenEstate.org provides a freeware software - called

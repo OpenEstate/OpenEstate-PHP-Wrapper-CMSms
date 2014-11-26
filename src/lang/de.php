@@ -18,7 +18,7 @@
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
 $lang['moddescription'] = 'Dieses Modul integriert den <em>OpenEstate-PHP-Export</em> in eine auf <em>CMS made simple</em> basierende Webseite.';
-$lang['changelog'] = 'siehe <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-WordPress/blob/master/README.md#changelog" target="_blank">Projektbeschreibung bei GitHub</a>';
+$lang['changelog'] = 'siehe <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-CMSms/blob/master/README.md#changelog" target="_blank">Projektbeschreibung bei GitHub</a>';
 $lang['help'] = '<h3>Was macht dieses Modul?</h3>
 <p>
   Im Rahmen des OpenEstate-Projektes wird unter Anderem eine kostenlose
