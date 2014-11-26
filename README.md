@@ -1,4 +1,4 @@
-OpenEstate-PHP-Wrapper for CMSms 0.4.4
+OpenEstate-PHP-Wrapper for CMSms 0.4.5
 ======================================
 
 This module integrates [OpenEstate-PHP-Export](https://github.com/OpenEstate/OpenEstate-PHP-Export)
@@ -36,7 +36,6 @@ any frames.
     `Extensions` → `OpenEstate PHP-Wrapper` → `Integration`. There you can find
     a form, to generate parameterized smarty tags.
 
-
 ### Deutsch
 
 Im Rahmen des OpenEstate-Projektes wird unter Anderem eine kostenlose
@@ -70,8 +69,13 @@ Webseite integriert werden.
     ein Formular, mit dessen Hilfe ein Smarty-Tag inkl. Parameter erzeugt werden
     kann.
 
+
 Changelog
 ---------
+
+### 0.4.5
+
+-   Some smaller improvements.
 
 ### 0.4.4
 
