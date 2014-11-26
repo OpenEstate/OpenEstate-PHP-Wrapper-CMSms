@@ -1,35 +1,81 @@
 <?php
-/**
- * PHP-Wrapper für CMSms.
- * Sprachdatei, englisch
- * $Id: en.php 2049 2013-02-12 07:47:36Z andy $
+/*
+ * A CMSms module for the OpenEstate-PHP-Export
+ * Copyright (C) 2010-2014 OpenEstate.org
  *
- * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2013, OpenEstate.org
- * @license http://www.gnu.org/licenses/gpl-3.0.txt
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
-$lang['moddescription'] = 'This module integrates PHP-exported properties from OpenEstate-ImmoTool into CMSms.';
-$lang['changelog'] = '<ul>
-<li>Version 0.3. Some smaller improvements.</li>
-<li>Version 0.2. First public release.</li>
-<li>Version 0.1. Internal release.</li>
-</ul>';
+$lang['moddescription'] = 'This module integrates <em>OpenEstate-PHP-Export</em> into a <em>CMS made simple</em> based website.';
+$lang['changelog'] = 'see <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-CMSms/blob/master/README.md#changelog" target="_blank">project description at GitHub</a>';
 $lang['help'] = '<h3>What Does This Do?</h3>
-<p>'.$lang['moddescription'].'</p>
-<h3>How do I configure it?</h3>
-<p>(a) Execute a PHP-export from <a href="http://www.openestate.org/immotool/" target="blank">OpenEstate-ImmoTool</a> to the webspace, where CMSms is installed.</p>
-<p>(b) Log in to CMSms-administration and open \'Extensions\' &raquo; \'OpenEstate PHP-Wrapper\' &raquo; \'Module Preferences\'. Enter path and URL, that points to your exported scripts.</p>
-<p>(c) If path &amp; URL is correctly configured, is shown in the \'Integration\' tab.</p>
+<p>
+  OpenEstate.org provides a freeware software - called
+  <em>OpenEstate-ImmoTool</em> - for small and medium sized real-estate-agencies
+  all over the world.
+</p>
+<p>
+  As one certain feature of this software, the managed properties can be exported
+  to any website that supports PHP. Together with this module, the exported
+  properties can be easily integrated into a <em>CMS made simple</em> based
+  website without any frames.
+</p>
 
-<h3>How do I use it?</h3>
-<p>(a) In general, the module can be placed in a page or template using the smarty tag &#123;OpenEstatePhpWrapper}.</p>
-<p>(b) The wrapping can be configured with certain parameters. Log in to CMSms-administration and open \'Extensions\' &raquo; \'OpenEstate PHP-Wrapper\' &raquo; \'Integration\'. There you can find a form, to generate parameterized smarty tags.</p>
+<h3>How to configure the module?</h3>
+<ol>
+  <li>
+    Execute a PHP-export from <em>OpenEstate-ImmoTool</em> to your webspace,
+    where <em>CMS made simple</em> is installed.
+  </li>
+  <li>
+    Log in to administration of <em>CMS made simple</em> and open
+    <em>Extensions</em> → <em>OpenEstate PHP-Wrapper</em> →
+    <em>Module Preferences</em>. Enter path and URL, that points to the folder
+    with the exported scripts.
+  </li>
+  <li>
+    The <em>Integration</em> tab shows, if the correct script path is
+    configured.
+  </li>
+</ol>
+
+<h3>How to use the module?</h3>
+<ol>
+  <li>
+    The module can be placed in any page or template with the smarty tag
+    <em>{OpenEstatePhpWrapper}</em>.
+  </li>
+  <li>
+    The wrapping can be configured with certain parameters. Log in to
+    administration of <em>CMS made simple</em> and open
+    <em>Extensions</em> → <em>OpenEstate PHP-Wrapper</em> →
+    <em>Integration</em>. There you can find a form, to generate parameterized
+    smarty tags.
+  </li>
+</ol>
 
 <h3>Copyright and License</h3>
-<p>Copyright &copy; 2010, Andreas Rudolph &amp; Walter Wagner <a href="mailto:info@openindex.de">&lt;info@openindex.de&gt;</a>. All Rights Are Reserved.</p>
-<p>This module has been released under the <a href="{module_url}gpl-3.0-standalone.html">GNU Public License v3</a>. You must agree to this license before using the module.</p>
+<p>
+  Copyright © 2010-2014, Andreas Rudolph &amp; Walter Wagner
+  <a href="mailto:info@openestate.org">&lt;info@openindex.de&gt;</a>.
+  All Rights Are Reserved.
+</p>
+<p>
+  This module has been released under the terms of
+  <a href="{module_url}gpl-3.0-standalone.html">GNU Public License v3</a>. You
+  must agree to this license before using the module.
+</p>
 ';
 
 // Meldungen
@@ -95,5 +141,5 @@ $lang['order_desc'] = 'Descending';
 $lang['error_invalid_path'] = 'Please enter a valid server-path!';
 $lang['error_file_not_found'] = 'The required file \'%s\' was not in the server-path!';
 $lang['error_version_not_found'] = 'The script-version was not found!';
+$lang['error_current_page_not_found'] = 'Can\'t load the current page!';
 $lang['error_update_is_running'] = '<h3>The properties are currently updated!</h3><p>Please revisit this page after some minutes.</p>';
-?>
