@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Installation des Moduls.
- * $Id: method.install.php 50 2010-03-25 02:44:21Z andy $
+ * $Id: method.install.php 897 2011-06-15 23:54:58Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009, OpenEstate.org
+ * @copyright 2009-2011, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 

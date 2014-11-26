@@ -2,21 +2,29 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung der Wrapper-Ausgabe auf der Webseite.
- * $Id: action.default.php 594 2010-12-12 01:37:49Z andy $
+ * $Id: action.default.php 897 2011-06-15 23:54:58Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009, OpenEstate.org
+ * @copyright 2009-2011, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 if (!isset($gCms)) exit;
+//echo '<pre>'; print_r($_SERVER); echo '</pre>';
+//echo '<pre>'; print_r($config); echo '</pre>';
 
+$cmsQueryVar = $config['query_var'];
+$cmsUrlRewriting = $config['url_rewriting'];
 $immotoolBasePath = trim( $this->GetPreference('wrap_path','') );
 if ($immotoolBasePath[strlen($immotoolBasePath)-1]!='/') $immotoolBasePath .= '/';
 $immotoolBaseUrl = trim( $this->GetPreference('wrap_url','') );
 if ($immotoolBaseUrl[strlen($immotoolBaseUrl)-1]!='/') $immotoolBaseUrl .= '/';
 
 // setup environment
+if (is_file($immotoolBasePath . 'immotool.php.lock')) {
+  echo $this->Lang('error_update_is_running');
+  return;
+}
 if (!defined('IMMOTOOL_BASE_PATH'))
   define( 'IMMOTOOL_BASE_PATH', $immotoolBasePath );  // Server-Pfad zu den ImmoTool-Skripten
 if (!defined('IMMOTOOL_BASE_URL'))
@@ -143,11 +151,20 @@ if (is_string($setup->AdditionalStylesheet) && strlen($setup->AdditionalStyleshe
   $stylesheets[] = $setup->AdditionalStylesheet;
 
 // Ausgabe erzeugen
-$baseUrl = $_SERVER['SCRIPT_NAME'];
+$baseUrl = null;
 $hiddenParams = array();
-if (isset($_REQUEST['page'])) {
-  $baseUrl .= '?page='.$_REQUEST['page'];
-  $hiddenParams['page'] = $_REQUEST['page'];
+if ($cmsUrlRewriting=='internal') {
+  $baseUrl = $_SERVER['PHP_SELF'];
+}
+else if ($cmsUrlRewriting=='mod_rewrite') {
+  $requestUrl = explode('?', $_SERVER['REQUEST_URI']);
+  $baseUrl = $requestUrl[0];
+}
+else {
+  $baseUrl = $_SERVER['SCRIPT_NAME'];
+  if (isset($_REQUEST[$cmsQueryVar])) {
+    $baseUrl .= '?'.$cmsQueryVar.'='.$_REQUEST[$cmsQueryVar];
+  }
 }
 echo immotool_functions::wrap_page( $page, $wrap, $baseUrl, IMMOTOOL_BASE_URL, $stylesheets, $hiddenParams );
 ?>

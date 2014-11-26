@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Sprachdatei, englisch
- * $Id: en_US.php 595 2010-12-12 01:40:46Z andy $
+ * $Id: en_US.php 897 2011-06-15 23:54:58Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009, OpenEstate.org
+ * @copyright 2009-2011, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -95,4 +95,5 @@ $lang['order_desc'] = 'Descending';
 $lang['error_invalid_path'] = 'Please enter a valid server-path!';
 $lang['error_file_not_found'] = 'The required file \'%s\' was not in the server-path!';
 $lang['error_version_not_found'] = 'The script-version was not found!';
+$lang['error_update_is_running'] = '<h3>The properties are currently updated!</h3><p>Please revisit this page after some minutes.</p>';
 ?>
