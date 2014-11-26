@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung der Wrapper-Ausgabe auf der Webseite.
- * $Id: action.default.php 1616 2012-07-03 08:11:12Z andy $
+ * $Id: action.default.php 1705 2012-08-15 14:33:25Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2011, OpenEstate.org
+ * @copyright 2009-2012, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -57,6 +57,8 @@ if (!defined('IMMOTOOL_PARAM_EXPOSE_CONTACT'))
   define('IMMOTOOL_PARAM_EXPOSE_CONTACT', 'wrapped_contact');
 if (!defined('IMMOTOOL_PARAM_EXPOSE_CAPTCHA'))
   define('IMMOTOOL_PARAM_EXPOSE_CAPTCHA', 'wrapped_captchacode');
+if (!defined('OPENESTATE_WRAPPER'))
+  define('OPENESTATE_WRAPPER', '1');
 
 // Script ermitteln
 $wrap = (isset($_REQUEST['wrap']) && is_string($_REQUEST['wrap']))? $_REQUEST['wrap']: null;

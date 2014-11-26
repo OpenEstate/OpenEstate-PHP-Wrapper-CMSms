@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung des Formulars im Administrationsbereich.
- * $Id: action.defaultadmin.php 1616 2012-07-03 08:11:12Z andy $
+ * $Id: action.defaultadmin.php 1705 2012-08-15 14:33:25Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2011, OpenEstate.org
+ * @copyright 2009-2012, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 

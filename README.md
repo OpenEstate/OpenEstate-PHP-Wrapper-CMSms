@@ -1,4 +1,4 @@
-OpenEstate-PHP-Wrapper for CMSms 0.4.3
+OpenEstate-PHP-Wrapper for CMSms 0.4.4
 ======================================
 
 This module integrates [OpenEstate-PHP-Export](https://github.com/OpenEstate/OpenEstate-PHP-Export)
@@ -72,6 +72,10 @@ Webseite integriert werden.
 
 Changelog
 ---------
+
+### 0.4.4
+
+-   Some smaller improvements.
 
 ### 0.4.3
 

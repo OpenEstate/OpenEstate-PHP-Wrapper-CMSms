@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Sprachdatei, englisch
- * $Id: en_US.php 1705 2012-08-15 14:33:25Z andy $
+ * $Id: en.php 1705 2012-08-15 14:33:25Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009-2012, OpenEstate.org
