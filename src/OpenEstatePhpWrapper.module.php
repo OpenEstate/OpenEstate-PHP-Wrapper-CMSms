@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Modul-Klasse, siehe http://www.cmsmadesimple.org/api/class_cms_module.html
- * $Id: OpenEstatePhpWrapper.module.php 1111 2011-10-21 19:09:58Z andy $
+ * $Id: OpenEstatePhpWrapper.module.php 1616 2012-07-03 08:11:12Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009-2011, OpenEstate.org
@@ -61,7 +61,7 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @return string version number (can be something like 1.4rc1)
    */
   function GetVersion() {
-    return '0.4.2';
+    return '0.4.3';
   }
 
   /**
@@ -381,7 +381,7 @@ class OpenEstatePhpWrapper extends CMSModule {
     /*
     // Don't allow parameters other than the ones you've explicitly defined
     $this->RestrictUnknownParams();
-  
+
     // syntax for creating a parameter is parameter name, default value, description
     $this->CreateParameter('skeleton_id', -1, $this->Lang('help_skeleton_id'));
     // skeleton_id must be an integer
@@ -399,7 +399,7 @@ class OpenEstatePhpWrapper extends CMSModule {
     /*
     * 4. Event Handling
     *
-   
+
     Typical example: specify the originator, the event name, and whether or not
     the event is removable (used for one-time events)
 

@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung des Formulars im Administrationsbereich.
- * $Id: action.defaultadmin.php 897 2011-06-15 23:54:58Z andy $
+ * $Id: action.defaultadmin.php 1616 2012-07-03 08:11:12Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009-2011, OpenEstate.org
@@ -26,7 +26,7 @@ if (FALSE == empty($params['active_tab'])) {
 
 $tab_header = $this->StartTabHeaders();
 
-// general tab 
+// general tab
 $tab_header .= $this->SetTabHeader('general',$this->Lang('title_general'),('general' == $tab)?true:false);
 $this->smarty->assign('start_general_tab',$this->StartTab('general', $params));
 
@@ -69,7 +69,11 @@ if ($environmentIsValid) {
   $testResult .= '<span style="color:green;">version ' . IMMOTOOL_SCRIPT_VERSION . '</span>';
 
   $setupIndex = new immotool_setup_index();
-  $setupExpose = new immotool_setup_expose();
+  //$setupExpose = new immotool_setup_expose();
+  if (is_callable(array('immotool_functions', 'init_config'))) {
+    immotool_functions::init_config($setupIndex, 'load_config_index');
+    //immotool_functions::init_config($setupExpose, 'load_config_expose');
+  }
   $translations = null;
   $lang = immotool_functions::init_language( $setupIndex->DefaultLanguage, $setupIndex->DefaultLanguage, $translations );
   if (!is_array($translations)) {
@@ -136,7 +140,18 @@ if ($environmentIsValid) {
   // index, order, by
   $orders = array();
   $defaultOrder = null;
-  foreach ($setupIndex->OrderOptions as $key) {
+  $orderNames = array();
+  if (!is_callable(array('immotool_functions', 'list_available_orders'))) {
+    // Mechanismus für ältere PHP-Exporte, um die registrierten Sortierungen zu verwenden
+    if (is_array($setupIndex->OrderOptions)) {
+      $orderNames = $setupIndex->OrderOptions;
+    }
+  }
+  else {
+    // alle verfügbaren Sortierungen verwenden
+    $orderNames = immotool_functions::list_available_orders();
+  }
+  foreach ($orderNames as $key) {
     if (is_null($defaultOrder)) $defaultOrder = $key;
     $orderObj = immotool_functions::get_order($key);
     $by = $orderObj->getTitle( $translations, $lang );
@@ -179,9 +194,8 @@ if ($environmentIsValid) {
     $filters[] = $filterWidget;
     $filterIds[] = '\'filter_' . $key . '\'';
   }
-  if (count($filters)>0) $this->smarty->assign('input_index_filters', implode( '&nbsp;', $filters ) );
+  if (count($filters)>0) $this->smarty->assign('input_index_filters', implode( '<br/>', $filters ) );
   if (count($filterIds)>0) $this->smarty->assign('filter_ids', implode( ', ', $filterIds ) );
-
 
   // expose, view
   $views = array(
@@ -230,7 +244,7 @@ $smarty->assign('start_form', $this->CreateFormStart($id, 'save_admin_prefs', $r
 //$smarty->assign('input_allow_add',$this->CreateInputCheckbox($id, 'allow_add', 1,
 //   $this->GetPreference('allow_add','0')). $this->Lang('title_allow_add_help'));
 
-$smarty->assign('input_wrap_path',$this->CreateInputTextWithLabel( 
+$smarty->assign('input_wrap_path',$this->CreateInputTextWithLabel(
         $id,
         'wrap_path',
         $this->GetPreference('wrap_path',''),
@@ -238,7 +252,7 @@ $smarty->assign('input_wrap_path',$this->CreateInputTextWithLabel(
         255,
         'style="width:75%;"',
         $this->Lang('title_wrap_path_help') . '<br/>' ) );
-$smarty->assign('input_wrap_url',$this->CreateInputTextWithLabel( 
+$smarty->assign('input_wrap_url',$this->CreateInputTextWithLabel(
         $id,
         'wrap_url',
         $this->GetPreference('wrap_url',''),
