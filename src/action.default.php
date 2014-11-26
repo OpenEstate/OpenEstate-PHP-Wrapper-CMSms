@@ -90,23 +90,48 @@ if (!defined('OPENESTATE_WRAPPER')) {
   define('OPENESTATE_WRAPPER', '1');
 }
 
+// load attributes from the smarty tag
+$settings = array();
+if (is_array($params)) {
+  foreach ($params as $key => $value) {
+    $key = trim($key);
+    if (substr($key, 0, 7) == 'filter_') {
+      if (!isset($settings['filter'])) {
+        $settings['filter'] = array();
+      }
+      $settings['filter'][substr($key, 7)] = $value;
+    }
+    else {
+      $settings[$key] = $value;
+    }
+  }
+}
+//echo '<pre>' . print_r($settings, true) . '</pre>';
+
+if (is_file(IMMOTOOL_BASE_PATH . 'immotool.php.lock')) {
+  return __('error_update_is_running', 'openestate-php-wrapper');
+}
+
+// keep wrapper settings in a global variable for further use
+$GLOBALS['openestate_wrapper_settings'] = $settings;
+
 // Script ermitteln
 $wrap = (isset($_REQUEST['wrap']) && is_string($_REQUEST['wrap'])) ? $_REQUEST['wrap'] : null;
-$wrap = (!is_string($wrap) && isset($params['wrap'])) ? $params['wrap'] : $wrap;
+$wrap = (!is_string($wrap) && isset($settings['wrap'])) ? $settings['wrap'] : $wrap;
 if ($wrap == 'expose') {
   $wrap = 'expose';
   $script = 'expose.php';
   //echo '<pre>' . print_r($_REQUEST, true) . '</pre>'; return;
   // Standard-Konfigurationswerte beim ersten Aufruf setzen
   if (!isset($_REQUEST['wrap'])) {
-    if (isset($params['lang'])) {
-      $_REQUEST[IMMOTOOL_PARAM_LANG] = $params['lang'];
+    if (isset($settings['lang'])) {
+      $_REQUEST[IMMOTOOL_PARAM_LANG] = $settings['lang'];
     }
-    if (isset($params['id'])) {
-      $_REQUEST[IMMOTOOL_PARAM_EXPOSE_ID] = $params['id'];
+    if (isset($settings['id'])) {
+      $_REQUEST[IMMOTOOL_PARAM_EXPOSE_ID] = $settings['id'];
     }
-    if (isset($params['view'])) {
-      $_REQUEST[IMMOTOOL_PARAM_EXPOSE_VIEW] = $params['view'];
+    if (isset($settings['view'])) {
+      $_REQUEST[IMMOTOOL_PARAM_EXPOSE_VIEW] = $settings['view'];
     }
   }
 }
@@ -117,21 +142,21 @@ else {
   // Standard-Konfigurationswerte beim ersten Aufruf setzen
   if (!isset($_REQUEST['wrap'])) {
     $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER_CLEAR] = '1';
-    if (isset($params['lang'])) {
-      $_REQUEST[IMMOTOOL_PARAM_LANG] = $params['lang'];
+    if (isset($settings['lang'])) {
+      $_REQUEST[IMMOTOOL_PARAM_LANG] = $settings['lang'];
     }
-    if (isset($params['view'])) {
-      $_REQUEST[IMMOTOOL_PARAM_INDEX_VIEW] = $params['view'];
+    if (isset($settings['view'])) {
+      $_REQUEST[IMMOTOOL_PARAM_INDEX_VIEW] = $settings['view'];
     }
-    if (isset($params['mode'])) {
-      $_REQUEST[IMMOTOOL_PARAM_INDEX_MODE] = $params['mode'];
+    if (isset($settings['mode'])) {
+      $_REQUEST[IMMOTOOL_PARAM_INDEX_MODE] = $settings['mode'];
     }
 
     // Standard-Sortierung
-    if (isset($params['order_by'])) {
-      $order = $params['order_by'];
-      if (isset($params['order_dir'])) {
-        $order .= '-' . $params['order_dir'];
+    if (isset($settings['order_by'])) {
+      $order = $settings['order_by'];
+      if (isset($settings['order_dir'])) {
+        $order .= '-' . $settings['order_dir'];
       }
       else {
         $order .= '-asc';
@@ -149,20 +174,14 @@ else {
 
   // vorgegebene Filter-Kriterien mit der Anfrage zusammenführen
   if (!isset($_REQUEST['wrap']) || isset($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER])) {
-    $filters = array();
-    foreach (array_keys($params) as $param) {
-      if (strtolower(substr($param, 0, strlen('filter_'))) != 'filter_') {
-        continue;
-      }
-      $filterName = substr($param, strlen('filter_'));
-      $filters[$filterName] = $params[$param];
-    }
-    foreach ($filters as $filter => $value) {
-      if (!isset($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER]) || !is_array($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER])) {
-        $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER] = array();
-      }
-      if (!isset($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER][$filter])) {
-        $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER][$filter] = $value;
+    if (isset($settings['filter']) && is_array($settings['filter'])) {
+      foreach ($settings['filter'] as $filter => $value) {
+        if (!isset($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER]) || !is_array($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER])) {
+          $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER] = array();
+        }
+        if (!isset($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER][$filter])) {
+          $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER][$filter] = $value;
+        }
       }
     }
   }
