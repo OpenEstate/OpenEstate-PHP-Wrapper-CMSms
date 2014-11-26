@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Sprachdatei, englisch
- * $Id: en_US.php 50 2010-03-25 02:44:21Z andy $
+ * $Id: en_US.php 595 2010-12-12 01:40:46Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009, OpenEstate.org
@@ -12,6 +12,7 @@
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
 $lang['moddescription'] = 'This module integrates PHP-exported properties from OpenEstate-ImmoTool into CMSms.';
 $lang['changelog'] = '<ul>
+<li>Version 0.3. Some smaller improvements.</li>
 <li>Version 0.2. First public release.</li>
 <li>Version 0.1. Internal release.</li>
 </ul>';
