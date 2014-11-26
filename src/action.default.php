@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung der Wrapper-Ausgabe auf der Webseite.
- * $Id: action.default.php 1111 2011-10-21 19:09:58Z andy $
+ * $Id: action.default.php 1616 2012-07-03 08:11:12Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009-2011, OpenEstate.org
@@ -64,21 +64,10 @@ $wrap = (!is_string($wrap) && isset($params['wrap']))? $params['wrap']: $wrap;
 if ($wrap=='expose') {
   $wrap = 'expose';
   $script = 'expose.php';
+  //echo '<pre>' . print_r($_REQUEST, true) . '</pre>'; return;
 
-  // Standard-Parameter ggf. setzen
-  //echo '<pre>';
-  //print_r($_REQUEST);
-  //echo '</pre>';
-  $defaultParams = array( 'wrap', IMMOTOOL_PARAM_LANG, IMMOTOOL_PARAM_EXPOSE_ID, IMMOTOOL_PARAM_EXPOSE_VIEW );
-  $useDefaultParams = true;
-  foreach ($defaultParams as $param) {
-    if (isset($_REQUEST[ $param ])) {
-      $useDefaultParams = false;
-      break;
-    }
-  }
-
-  if ($useDefaultParams) {
+  // Standard-Konfigurationswerte beim ersten Aufruf setzen
+  if (!isset($_REQUEST[ 'wrap' ])) {
     if (isset($params['lang']))
       $_REQUEST[ IMMOTOOL_PARAM_LANG ] = $params['lang'];
     if (isset($params['id']))
@@ -90,20 +79,10 @@ if ($wrap=='expose') {
 else {
   $wrap = 'index';
   $script = 'index.php';
+  //echo '<pre>' . print_r($_REQUEST, true) . '</pre>'; return;
 
-  // Standard-Parameter ggf. setzen
-  //echo '<pre>';
-  //print_r($_REQUEST);
-  //echo '</pre>';
-  $defaultParams = array( 'wrap', IMMOTOOL_PARAM_LANG, IMMOTOOL_PARAM_INDEX_VIEW, IMMOTOOL_PARAM_INDEX_MODE, IMMOTOOL_PARAM_INDEX_ORDER, IMMOTOOL_PARAM_INDEX_FILTER );
-  $useDefaultParams = true;
-  foreach ($defaultParams as $param) {
-    if (isset($_REQUEST[ $param ])) {
-      $useDefaultParams = false;
-      break;
-    }
-  }
-  if ($useDefaultParams) {
+  // Standard-Konfigurationswerte beim ersten Aufruf setzen
+  if (!isset($_REQUEST[ 'wrap' ])) {
     $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER_CLEAR ] = '1';
     if (isset($params['lang']))
       $_REQUEST[ IMMOTOOL_PARAM_LANG ] = $params['lang'];
@@ -119,20 +98,30 @@ else {
       else $order .= '-asc';
       $_REQUEST[ IMMOTOOL_PARAM_INDEX_ORDER ] = $order;
     }
+  }
 
-    // Standard-Filter
+  // Zurücksetzen der gewählten Filter
+  if (isset($_REQUEST[IMMOTOOL_PARAM_INDEX_RESET])) {
+    unset($_REQUEST[IMMOTOOL_PARAM_INDEX_RESET]);
+    $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ] = array();
+    $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER_CLEAR ] = '1';
+  }
+
+  // vorgegebene Filter-Kriterien mit der Anfrage zusammenführen
+  if (!isset($_REQUEST[ 'wrap' ]) || isset($_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ])) {
     $filters = array();
     foreach (array_keys($params) as $param) {
-      //echo $param . ' => ' .
       if (strtolower(substr($param, 0, strlen('filter_')))!='filter_') continue;
       $filterName = substr($param, strlen('filter_'));
       $filters[$filterName] = $params[$param];
     }
-    //echo '<pre>';
-    //print_r( $filters );
-    //echo '</pre>';
-    if (is_array($filters) && count($filters)>0) {
-      $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ] = $filters;
+    foreach ($filters as $filter=>$value) {
+      if (!is_array($_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ])) {
+        $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ] = array();
+      }
+      if (!isset($_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ][$filter])) {
+        $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER ][$filter] = $value;
+      }
     }
   }
 }
@@ -148,7 +137,7 @@ ob_end_clean();
 $setup = new immotool_setup();
 if (is_callable(array('immotool_myconfig', 'load_config_default'))) immotool_myconfig::load_config_default( $setup );
 $stylesheets = array( IMMOTOOL_BASE_URL . 'style.php' );
-if (is_string($setup->AdditionalStylesheet) && strlen($setup->AdditionalStylesheet)>0) 
+if (is_string($setup->AdditionalStylesheet) && strlen($setup->AdditionalStylesheet)>0)
   $stylesheets[] = $setup->AdditionalStylesheet;
 
 // Ausgabe erzeugen
