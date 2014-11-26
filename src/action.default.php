@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung der Wrapper-Ausgabe auf der Webseite.
- * $Id: action.default.php 50 2010-03-25 02:44:21Z andy $
+ * $Id: action.default.php 594 2010-12-12 01:37:49Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009, OpenEstate.org
@@ -143,30 +143,11 @@ if (is_string($setup->AdditionalStylesheet) && strlen($setup->AdditionalStyleshe
   $stylesheets[] = $setup->AdditionalStylesheet;
 
 // Ausgabe erzeugen
-$scriptName = $_SERVER['SCRIPT_NAME'];
-$output = immotool_functions::wrap_page( $page, $wrap, $scriptName, IMMOTOOL_BASE_URL, $stylesheets );
-
-// 'page'-Parameter von CMSms einfügen
-if (isset($_REQUEST['page']) && is_string($_REQUEST['page'])) {
-  //die(preg_quote( $scriptName ));
-
-  $newLink = $scriptName.'?page='.$_REQUEST['page'];
-  $replacements = array(
-
-    // page-Parameter in Direktlinks übernehmen
-    '/<a([^>]*)href="'.preg_quote( $scriptName, '/' ).'\?([^"]*)"/is' => '<a\1href="'.$newLink.'&amp;\2"',
-    '/<a([^>]*)href="'.preg_quote( $scriptName, '/' ).'"/is' => '<a\1href="'.$newLink.'"',
-
-    // page-Parameter in Formulare übernehmen (muss als GET-Parameter übermittelt werden)
-    '/<form([^>]*)method="get"([^>]*)>/is' => '<form\1method="get"\2><input type="hidden" name="page" value="'.$_REQUEST['page'].'"/>',
-    '/<form([^>]*)action="'.preg_quote( $scriptName, '/' ).'\?([^"]*)"([^>]*)method="post"([^>]*)>/is' => '<form\1action="'.$newLink.'&amp;\2"\3method="post"\4>',
-    '/<form([^>]*)action="'.preg_quote( $scriptName, '/' ).'(#[^"]*)?"([^>]*)method="post"([^>]*)>/is' => '<form\1action="'.$newLink.'\2"\3method="post"\4>',
-  );
-
-  //echo '<pre>'; print_r($replacements); echo '</pre>';
-  $output = preg_replace( array_keys($replacements), array_values($replacements), $output );
+$baseUrl = $_SERVER['SCRIPT_NAME'];
+$hiddenParams = array();
+if (isset($_REQUEST['page'])) {
+  $baseUrl .= '?page='.$_REQUEST['page'];
+  $hiddenParams['page'] = $_REQUEST['page'];
 }
-
-// Ausgabe schreiben
-echo $output;
+echo immotool_functions::wrap_page( $page, $wrap, $baseUrl, IMMOTOOL_BASE_URL, $stylesheets, $hiddenParams );
 ?>
