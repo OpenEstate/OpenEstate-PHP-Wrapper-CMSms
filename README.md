@@ -1,5 +1,5 @@
-OpenEstate-PHP-Wrapper for CMSms 0.4
-====================================
+OpenEstate-PHP-Wrapper for CMSms 0.4.2
+======================================
 
 This module integrates [OpenEstate-PHP-Export](https://github.com/OpenEstate/OpenEstate-PHP-Export)
 into a *CMS made simple* based website.
@@ -72,6 +72,12 @@ Webseite integriert werden.
 
 Changelog
 ---------
+
+### 0.4.2
+
+-   Reset filter selection, if a property page is accessed for the first time or
+    if the website visitor jumps between multiple property pages.
+    (see [Forum](http://board.openestate.org/viewtopic.php?f=7&t=3329))
 
 ### 0.4
 

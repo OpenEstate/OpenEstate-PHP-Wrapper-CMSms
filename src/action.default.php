@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung der Wrapper-Ausgabe auf der Webseite.
- * $Id: action.default.php 897 2011-06-15 23:54:58Z andy $
+ * $Id: action.default.php 1111 2011-10-21 19:09:58Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009-2011, OpenEstate.org
@@ -104,6 +104,7 @@ else {
     }
   }
   if ($useDefaultParams) {
+    $_REQUEST[ IMMOTOOL_PARAM_INDEX_FILTER_CLEAR ] = '1';
     if (isset($params['lang']))
       $_REQUEST[ IMMOTOOL_PARAM_LANG ] = $params['lang'];
     if (isset($params['view']))
