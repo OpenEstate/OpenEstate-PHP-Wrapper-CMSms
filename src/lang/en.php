@@ -1,12 +1,19 @@
 <?php
-/**
- * PHP-Wrapper für CMSms.
- * Sprachdatei, englisch
- * $Id: en.php 2049 2013-02-12 07:47:36Z andy $
+/*
+ * A CMSms module for the OpenEstate-PHP-Export
+ * Copyright (C) 2010-2014 OpenEstate.org
  *
- * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2013, OpenEstate.org
- * @license http://www.gnu.org/licenses/gpl-3.0.txt
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
@@ -17,7 +24,7 @@ $lang['changelog'] = '<ul>
 <li>Version 0.1. Internal release.</li>
 </ul>';
 $lang['help'] = '<h3>What Does This Do?</h3>
-<p>'.$lang['moddescription'].'</p>
+<p>' . $lang['moddescription'] . '</p>
 <h3>How do I configure it?</h3>
 <p>(a) Execute a PHP-export from <a href="http://www.openestate.org/immotool/" target="blank">OpenEstate-ImmoTool</a> to the webspace, where CMSms is installed.</p>
 <p>(b) Log in to CMSms-administration and open \'Extensions\' &raquo; \'OpenEstate PHP-Wrapper\' &raquo; \'Module Preferences\'. Enter path and URL, that points to your exported scripts.</p>
@@ -96,4 +103,3 @@ $lang['error_invalid_path'] = 'Please enter a valid server-path!';
 $lang['error_file_not_found'] = 'The required file \'%s\' was not in the server-path!';
 $lang['error_version_not_found'] = 'The script-version was not found!';
 $lang['error_update_is_running'] = '<h3>The properties are currently updated!</h3><p>Please revisit this page after some minutes.</p>';
-?>

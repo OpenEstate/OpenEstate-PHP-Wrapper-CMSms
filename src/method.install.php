@@ -1,15 +1,24 @@
 <?php
-/**
- * PHP-Wrapper für CMSms.
- * Installation des Moduls.
- * $Id: method.install.php 2049 2013-02-12 07:47:36Z andy $
+/*
+ * A CMSms module for the OpenEstate-PHP-Export
+ * Copyright (C) 2010-2014 OpenEstate.org
  *
- * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2013, OpenEstate.org
- * @license http://www.gnu.org/licenses/gpl-3.0.txt
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!isset($gCms)) exit;
+if (!isset($gCms)) {
+  exit;
+}
 
 // create preferences
 global $config;
@@ -17,5 +26,4 @@ $this->SetPreference('wrap_path', $config['root_path'] . '/immotool_export');
 $this->SetPreference('wrap_url', $config['root_url'] . '/immotool_export');
 
 // put mention into the admin log
-$this->Audit( 0, $this->Lang('friendlyname'), $this->Lang('installed', $this->GetVersion()) );
-?>
+$this->Audit(0, $this->Lang('friendlyname'), $this->Lang('installed', $this->GetVersion()));

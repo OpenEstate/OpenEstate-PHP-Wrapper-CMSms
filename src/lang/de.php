@@ -1,12 +1,19 @@
 <?php
-/**
- * PHP-Wrapper für CMSms.
- * Sprachdatei, deutsch
- * $Id: de.php 2049 2013-02-12 07:47:36Z andy $
+/*
+ * A CMSms module for the OpenEstate-PHP-Export
+ * Copyright (C) 2010-2014 OpenEstate.org
  *
- * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2013, OpenEstate.org
- * @license http://www.gnu.org/licenses/gpl-3.0.txt
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
@@ -17,7 +24,7 @@ $lang['changelog'] = '<ul>
 <li>Version 0.1. Internes Release.</li>
 </ul>';
 $lang['help'] = '<h3>Was macht dieses Modul?</h3>
-<p>'.$lang['moddescription'].'</p>
+<p>' . $lang['moddescription'] . '</p>
 <h3>Wie konfiguriere ich dieses Modul?</h3>
 <p>(a) Führen Sie einen PHP-Export aus dem <a href="http://www.openestate.org/immotool/" target="blank">OpenEstate-ImmoTool</a> auf Ihren Webspace durch, wo auch CMSms installiert wurde.</p>
 <p>(b) Melden Sie sich in der CMSms-Administration an und klicken Sie auf \'Erweiterungen\' &raquo; \'OpenEstate PHP-Wrapper\' &raquo; \'Modul Einstellungen\'. Tragen Sie Pfad und URL ein, die auf die exportierten PHP-Skripte verweisen.</p>
@@ -96,4 +103,3 @@ $lang['error_invalid_path'] = 'Bitte tragen Sie einen gültigen Skript-Pfad ein!
 $lang['error_file_not_found'] = 'Die erforderlichte Datei \'%s\' befindet sich nicht im Skript-Pfad!';
 $lang['error_version_not_found'] = 'Die Skript-Version konnte nicht ermittelt werden!';
 $lang['error_update_is_running'] = '<h3>Der Immobilienbestand wird momentan aktualisiert!</h3><p>Bitte besuchen Sie diese Seite in wenigen Minuten erneut.</p>';
-?>

@@ -1,21 +1,29 @@
 <?php
-/**
- * PHP-Wrapper für CMSms.
- * Modul-Klasse, siehe http://www.cmsmadesimple.org/api/class_cms_module.html
- * $Id: OpenEstatePhpWrapper.module.php 2049 2013-02-12 07:47:36Z andy $
+/*
+ * A CMSms module for the OpenEstate-PHP-Export
+ * Copyright (C) 2010-2014 OpenEstate.org
  *
- * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2013, OpenEstate.org
- * @license http://www.gnu.org/licenses/gpl-3.0.txt
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
  * Modul.
+ * see: http://www.cmsmadesimple.org/api/class_cms_module.html
  *
  * @author Andreas Rudolph & Walter Wagner
  * @version 0.3
  * @license GPL3
- **/
+ */
 class OpenEstatePhpWrapper extends CMSModule {
 
   /**
@@ -48,7 +56,6 @@ class OpenEstatePhpWrapper extends CMSModule {
   function GetFriendlyName() {
     return $this->Lang('friendlyname');
   }
-
 
   /**
    * GetVersion()
@@ -211,10 +218,10 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @return string dashboard output
    */
   function GetDashboardOutput() {
-    /*global $gCms;
-    $db = &$gCms->GetDb();
-    $rcount = $db->GetOne('select count(*) from '.cms_db_prefix().'module_skeleton');
-    return $this->Lang('dash_record_count',$rcount);*/
+    //global $gCms;
+    //$db = &$gCms->GetDb();
+    //$rcount = $db->GetOne('select count(*) from ' . cms_db_prefix() . 'module_skeleton');
+    //return $this->Lang('dash_record_count', $rcount);
     return '';
   }
 
@@ -232,17 +239,16 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @returns a stdClass object with two properties.... priority (1->3)... and
    * html, which indicates the text to display for the Notification.
    */
-  function GetNotificationOutput($priority=2) {
-    /*global $gCms;
-    $db = &$gCms->GetDb();
-    $rcount = $db->GetOne('select count(*) from '.cms_db_prefix().'module_skeleton');
-    if ($priority < 4 && $rcount == 0 )
-    {
-      $ret = new stdClass;
-      $ret->priority = 2;
-      $ret->html=$this->Lang('alert_no_records');
-      return $ret;
-    }*/
+  function GetNotificationOutput($priority = 2) {
+    //global $gCms;
+    //$db = &$gCms->GetDb();
+    //$rcount = $db->GetOne('select count(*) from ' . cms_db_prefix() . 'module_skeleton');
+    //if ($priority < 4 && $rcount == 0) {
+    //  $ret = new stdClass;
+    //  $ret->priority = 2;
+    //  $ret->html = $this->Lang('alert_no_records');
+    //  return $ret;
+    //}
     return '';
   }
 
@@ -297,14 +303,10 @@ class OpenEstatePhpWrapper extends CMSModule {
    * It can also be a major pain if you don't have time to
    * update your modules every time a new release of CMSMS comes
    * out, hence this is commented out here.
-   */
-
-  /*
-  function MaximumCMSVersion()
-  {
+   *
+    function MaximumCMSVersion() {
     return "1.5";
-  }
-  */
+    } */
 
   /**
    * SetParameters()
@@ -349,62 +351,49 @@ class OpenEstatePhpWrapper extends CMSModule {
    * can register that in this method.
    *
    */
-
   function SetParameters() {
-    /*
-    * 1. Simply module tag
-    * This next line allows you to use the tag {Skeleton} in your template or page; otherwise,
-    * you would have to use the more cumbersome tag {cms_module module='Skeleton'}
-    */
+
+    // 1. Simply module tag
+    //
+    // This next line allows you to use the tag {Skeleton} in your template or page; otherwise,
+    // you would have to use the more cumbersome tag {cms_module module='Skeleton'}
     $this->RegisterModulePlugin();
 
-    /*
-    * 2. Pretty URLS
-    *
+    // 2. Pretty URLS
+    //
+    // For example:
+    // $this->RegisterRoute('/skeleton\/(?P<numeric_param_name>[0-9]+)\/(?P<string_param_name>[a-zA-Z]+)\/(?P<returnid>[0-9]+)$/', array('action' => 'default'));
+    // now, any url that looks like:
+    // /skeleton/3/foo/5
+    // would call the default action, with:
+    // $params['numeric_param_name'] set to 3
+    // $params['string_param_name'] set to "foo"
+    // and $returnid set to 5
 
-    For example:
-    $this->RegisterRoute('/skeleton\/(?P<numeric_param_name>[0-9]+)\/(?P<string_param_name>[a-zA-Z]+)\/(?P<returnid>[0-9]+)$/',
-     array('action'=>'default'));
-
-    now, any url that looks like:
-    /skeleton/3/foo/5
-    would call the default action, with:
-    $params['numeric_param_name'] set to 3
-    $params['string_param_name'] set to "foo"
-    and $returnid set to 5
-    */
-
-    /*
-    * 3. Security
-    *
-    */
-    /*
+    // 3. Security
+    //
     // Don't allow parameters other than the ones you've explicitly defined
-    $this->RestrictUnknownParams();
-
+    //$this->RestrictUnknownParams();
+    //
     // syntax for creating a parameter is parameter name, default value, description
-    $this->CreateParameter('skeleton_id', -1, $this->Lang('help_skeleton_id'));
+    //$this->CreateParameter('skeleton_id', -1, $this->Lang('help_skeleton_id'));
     // skeleton_id must be an integer
-    $this->SetParameterType('skeleton_id',CLEAN_INT);
-
+    //$this->SetParameterType('skeleton_id',CLEAN_INT);
+    //
     // module_message must be a string
-    $this->CreateParameter('module_message','',$this->Lang('help_module_message'));
-    $this->SetParameterType('module_message',CLEAN_STRING);
-
+    //$this->CreateParameter('module_message','',$this->Lang('help_module_message'));
+    //$this->SetParameterType('module_message',CLEAN_STRING);
+    //
     // description must be a string
-    $this->CreateParameter('description','',$this->Lang('help_description'));
-    $this->SetParameterType('description',CLEAN_STRING);
-    */
+    //$this->CreateParameter('description','',$this->Lang('help_description'));
+    //$this->SetParameterType('description',CLEAN_STRING);
 
-    /*
-    * 4. Event Handling
-    *
 
-    Typical example: specify the originator, the event name, and whether or not
-    the event is removable (used for one-time events)
-
-    $this->AddEventHandler( 'Core', 'ContentPostRender', true );
-    */
+    // 4. Event Handling
+    //
+    // Typical example: specify the originator, the event name, and whether or not
+    // the event is removable (used for one-time events)
+    // $this->AddEventHandler( 'Core', 'ContentPostRender', true );
   }
 
   /**
@@ -416,8 +405,8 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @param string Eventname
    * @return string Description for event
    */
-  function GetEventDescription ( $eventname ) {
-    return $this->Lang('event_info_'.$eventname );
+  function GetEventDescription($eventname) {
+    return $this->Lang('event_info_' . $eventname);
   }
 
   /**
@@ -429,10 +418,9 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @param string Eventname
    * @return string Help for event
    */
-  function GetEventHelp ( $eventname ) {
-    return $this->Lang('event_help_'.$eventname );
+  function GetEventHelp($eventname) {
+    return $this->Lang('event_help_' . $eventname);
   }
-
 
   /**
    * DoEvent()
@@ -448,11 +436,9 @@ class OpenEstatePhpWrapper extends CMSModule {
    * "News", etc.
    * @param string eventname the name of the event
    * @param mixed params the parameters passed by the event initiator
-   */
-  /*function DoEvent( $originator, $eventname, &$params )
-  {
-    if ($originator == 'Core' && $eventname == 'ContentPostRender')
-    {
+   *
+  function DoEvent($originator, $eventname, &$params) {
+    if ($originator == 'Core' && $eventname == 'ContentPostRender') {
       // stupid example -- lowercases entire output
       $params['content'] = strtolower($params['content']);
     }
@@ -547,41 +533,33 @@ class OpenEstatePhpWrapper extends CMSModule {
    * and doing the implementation in the separate files.
    *
    * You can implement your module either way,
-   */
+   *
+
   // commented out, all needed actions are defined in seperate files
-  /*function DoAction($action, $id, $params, $returnid=-1)
-  {
-    switch ($action)
-    {
-      case 'default':
-      {
-        // this is the plug-in side, i.e., non-Admin
-        $this->DisplayModuleOutput($action, $id, $params);
-        break;
-      }
-      case 'defaultadmin':
-      {
-        // only let people access module preferences if they have permission
-        if ($this->CheckPermission('Use Skeleton'))
-        {
-          $this->DisplayAdminPanel($id, $params, $returnid);
+  function DoAction($action, $id, $params, $returnid = -1) {
+    switch ($action) {
+      case 'default': {
+          // this is the plug-in side, i.e., non-Admin
+          $this->DisplayModuleOutput($action, $id, $params);
+          break;
         }
-        else
-        {
-          $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
+      case 'defaultadmin': {
+          // only let people access module preferences if they have permission
+          if ($this->CheckPermission('Use Skeleton')) {
+            $this->DisplayAdminPanel($id, $params, $returnid);
+          }
+          else {
+            $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
+          }
+          break;
         }
-        break;
-      }
-      case 'save_admin_prefs':
-      {
-        // only let people save module preferences if they have permission
-        if ($this->CheckPermission('Use Skeleton'))
-        {
-          $this->SaveAdminPrefs($id, $params, $returnid);
+      case 'save_admin_prefs': {
+          // only let people save module preferences if they have permission
+          if ($this->CheckPermission('Use Skeleton')) {
+            $this->SaveAdminPrefs($id, $params, $returnid);
+          }
+          break;
         }
-        break;
-      }
     }
   }*/
 }
-?>

@@ -75,6 +75,8 @@ Changelog
 
 ### 0.5
 
+-   made some syntax fixes
+
 ### 0.4.5
 
 -   Some smaller improvements.
