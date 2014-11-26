@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Sprachdatei, englisch
- * $Id: en_US.php 1705 2012-08-15 14:33:25Z andy $
+ * $Id: en_US.php 2049 2013-02-12 07:47:36Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2012, OpenEstate.org
+ * @copyright 2009-2013, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 

@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Darstellung des Formulars im Administrationsbereich.
- * $Id: action.defaultadmin.php 1705 2012-08-15 14:33:25Z andy $
+ * $Id: action.defaultadmin.php 2057 2013-02-13 02:28:07Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2012, OpenEstate.org
+ * @copyright 2009-2013, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -40,7 +40,7 @@ $this->smarty->assign('start_integration_tab',$this->StartTab('integration', $pa
 
 // execute tests on the script-environment
 $environmentErrors = array();
-$environmentFiles = array( 'config.php', 'include/functions.php', 'data/language.php' );
+$environmentFiles = array( 'config.php', 'private.php', 'include/functions.php', 'data/language.php' );
 $immotoolBasePath = trim( $this->GetPreference('wrap_path','') );
 if (!is_dir($immotoolBasePath)) {
   $environmentErrors[] = $this->Lang('error_invalid_path');
@@ -187,6 +187,7 @@ if ($environmentIsValid) {
   foreach (immotool_functions::list_available_filters() as $key) {
     $filterObj = immotool_functions::get_filter( $key );
     if (!is_object($filterObj)) continue;
+    $filterValue = null;
     $filterWidget = $filterObj->getWidget( $filterValue, $lang, $translations, $setupIndex );
     if (!is_string($filterWidget) || strlen($filterWidget)==0) continue;
     $filterWidget = str_replace( '<select ', '<select onchange="build_tag();" ', $filterWidget );
