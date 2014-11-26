@@ -1,5 +1,5 @@
-OpenEstate-PHP-Wrapper for CMSms 0.5-SNAPSHOT
-=============================================
+OpenEstate-PHP-Wrapper for CMSms 0.5
+====================================
 
 This module integrates [OpenEstate-PHP-Export](https://github.com/OpenEstate/OpenEstate-PHP-Export)
 into a *CMS made simple* based website.
@@ -75,10 +75,14 @@ Changelog
 
 ### 0.5
 
+-   Bugfix: Links inside wrapped content do not work, if pretty URL's are
+    disabled in *CMS made simple*.
+    (see [CMSms-Wiki about Pretty URL's](http://docs.cmsmadesimple.org/configuration/pretty-url))
 -   improved help text in translation files
 -   don't use duplicated translation files
 -   translated any source code comments into English
 -   made some syntax fixes
+-   tested against the latest version of *CMS made simple* (1.11.11)
 
 ### 0.4.5
 

@@ -35,6 +35,13 @@ if ($immotoolBaseUrl[strlen($immotoolBaseUrl) - 1] != '/') {
   $immotoolBaseUrl .= '/';
 }
 
+// get current page
+$currentContent = $gCms->variables['content_obj'];
+if (!is_object($currentContent)) {
+  echo $this->Lang('error_current_page_not_found');
+  return;
+}
+
 // setup environment
 if (is_file($immotoolBasePath . 'immotool.php.lock')) {
   echo $this->Lang('error_update_is_running');
@@ -215,10 +222,8 @@ else if ($cmsUrlRewriting == 'mod_rewrite') {
   $baseUrl = $requestUrl[0];
 }
 else {
-  $baseUrl = $_SERVER['SCRIPT_NAME'];
-  if (isset($_REQUEST[$cmsQueryVar])) {
-    $baseUrl .= '?' . $cmsQueryVar . '=' . $_REQUEST[$cmsQueryVar];
-  }
+  $baseUrl = $_SERVER['SCRIPT_NAME'] . '?' . $cmsQueryVar . '=' . $currentContent->Alias();
+  $hiddenParams[$cmsQueryVar] = $currentContent->Alias();
 }
 
 // convert and return the script output

@@ -18,7 +18,7 @@
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
 $lang['moddescription'] = 'This module integrates <em>OpenEstate-PHP-Export</em> into a <em>CMS made simple</em> based website.';
-$lang['changelog'] = 'see <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-WordPress/blob/master/README.md#changelog" target="_blank">project description at GitHub</a>';
+$lang['changelog'] = 'see <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-CMSms/blob/master/README.md#changelog" target="_blank">project description at GitHub</a>';
 $lang['help'] = '<h3>What Does This Do?</h3>
 <p>
   OpenEstate.org provides a freeware software - called
@@ -141,4 +141,5 @@ $lang['order_desc'] = 'Descending';
 $lang['error_invalid_path'] = 'Please enter a valid server-path!';
 $lang['error_file_not_found'] = 'The required file \'%s\' was not in the server-path!';
 $lang['error_version_not_found'] = 'The script-version was not found!';
+$lang['error_current_page_not_found'] = 'Can\'t load the current page!';
 $lang['error_update_is_running'] = '<h3>The properties are currently updated!</h3><p>Please revisit this page after some minutes.</p>';
