@@ -2,7 +2,7 @@
 /**
  * PHP-Wrapper für CMSms.
  * Modul-Klasse, siehe http://www.cmsmadesimple.org/api/class_cms_module.html
- * $Id: OpenEstatePhpWrapper.module.php 897 2011-06-15 23:54:58Z andy $
+ * $Id: OpenEstatePhpWrapper.module.php 1111 2011-10-21 19:09:58Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
  * @copyright 2009-2011, OpenEstate.org
@@ -61,7 +61,7 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @return string version number (can be something like 1.4rc1)
    */
   function GetVersion() {
-    return '0.4';
+    return '0.4.2';
   }
 
   /**
