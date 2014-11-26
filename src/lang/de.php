@@ -17,26 +17,67 @@
  */
 
 $lang['friendlyname'] = 'OpenEstate PHP-Wrapper';
-$lang['moddescription'] = 'Dieses Modul integriert PHP-Immobilienexporte aus dem OpenEstate-ImmoTool in CMSms.';
-$lang['changelog'] = '<ul>
-<li>Version 0.3. Detail-Korrekturen.</li>
-<li>Version 0.2. Erstes öffentliches Release.</li>
-<li>Version 0.1. Internes Release.</li>
-</ul>';
+$lang['moddescription'] = 'Dieses Modul integriert den <em>OpenEstate-PHP-Export</em> in eine auf <em>CMS made simple</em> basierende Webseite.';
+$lang['changelog'] = 'siehe <a href="https://github.com/OpenEstate/OpenEstate-PHP-Wrapper-WordPress/blob/master/README.md#changelog" target="_blank">Projektbeschreibung bei GitHub</a>';
 $lang['help'] = '<h3>Was macht dieses Modul?</h3>
-<p>' . $lang['moddescription'] . '</p>
-<h3>Wie konfiguriere ich dieses Modul?</h3>
-<p>(a) Führen Sie einen PHP-Export aus dem <a href="http://www.openestate.org/immotool/" target="blank">OpenEstate-ImmoTool</a> auf Ihren Webspace durch, wo auch CMSms installiert wurde.</p>
-<p>(b) Melden Sie sich in der CMSms-Administration an und klicken Sie auf \'Erweiterungen\' &raquo; \'OpenEstate PHP-Wrapper\' &raquo; \'Modul Einstellungen\'. Tragen Sie Pfad und URL ein, die auf die exportierten PHP-Skripte verweisen.</p>
-<p>(c) Im Reiter \'Integration\' wird geprüft und dargestellt, ob der hinterlegte Skript-Pfad korrekt ist.</p>
+<p>
+  Im Rahmen des OpenEstate-Projektes wird unter Anderem eine kostenlose
+  Immobiliensoftware unter dem Namen <em>OpenEstate-ImmoTool</em> entwickelt.
+  Gemeinsam mit den Anwendern soll eine Softwarelösung für kleine bis
+  mittelgroße Immobilienunternehmen entwickelt werden.
+</p>
+<p>
+  Unter Anderem können die im <em>OpenEstate-ImmoTool</em> verwalteten
+  Immobilien als PHP-Skripte auf die eigene Webseite exportiert werden. Mit
+  Hilfe dieses Moduls kann dieser PHP-Export unkompliziert in eine auf
+  <em>CMS made simple</em> basierende Webseite integriert werden.
+</p>
+
+<h3>Wie konfiguriere ich das Modul?</h3>
+<ol>
+  <li>
+    Führen Sie einen PHP-Export aus <em>OpenEstate-ImmoTool</em> auf Ihren
+    Webspace durch, wo auch <em>CMS made simple</em> installiert wurde.
+  </li>
+  <li>
+    Melden Sie sich in der Administration von <em>CMS made simple</em> an und
+    klicken Sie auf <em>Erweiterungen</em> → <em>OpenEstate PHP-Wrapper</em> →
+    <em>Modul Einstellungen</em>. Tragen Sie Pfad und URL ein, die auf den
+    Ordner mit den exportierten PHP-Skripten verweisen.
+  </li>
+  <li>
+    Im Reiter <em>Integration</em> wird geprüft und dargestellt, ob der
+    hinterlegte Skript-Pfad korrekt ist.
+  </li>
+</ol>
 
 <h3>Wie verwende ich das Modul?</h3>
-<p>(a) Allgemein kann das Modul durch das Smarty-Tag &#123;OpenEstatePhpWrapper} in eine beliebige Seite (oder Template) eingefügt werden.</p>
-<p>(b) Die Einbindung kann durch weitere Parameter konfiguriert werden. Melden Sie sich in der CMSms-Administration an und klicken Sie auf \'Erweiterungen\' &raquo; \'OpenEstate PHP-Wrapper\' &raquo; \'Integration\'. Dort finden Sie ein Formular, mit dessen Hilfe ein Smarty-Tag inkl. Parameter erzeugt werden kann.</p>
+<ol>
+  <li>
+    Allgemein kann das Modul durch das Smarty-Tag
+    <em>{OpenEstatePhpWrapper}</em> in eine beliebige Seite (oder Template)
+    eingefügt werden.
+  </li>
+  <li>
+    Die Einbindung kann durch weitere Parameter konfiguriert werden. Melden Sie
+    sich in der Administration von <em>CMS made simple</em> an und klicken Sie
+    auf <em>Erweiterungen</em> → <em>OpenEstate PHP-Wrapper</em> →
+    <em>Integration</em>. Dort finden Sie ein Formular, mit dessen Hilfe ein
+    Smarty-Tag inkl. Parameter erzeugt werden kann.
+  </li>
+</ol>
 
 <h3>Copyright und Lizenz</h3>
-<p>Copyright &copy; 2010, Andreas Rudolph &amp; Walter Wagner <a href="mailto:info@openindex.de">&lt;info@openindex.de&gt;</a>. All Rights Are Reserved.</p>
-<p>Dieses Modul wurde veröffentlicht unter den Bedingungen der <a href="{module_url}gpl-3.0-standalone.html">GNU Public License v3</a>. Mit Verwendung des Moduls akzeptieren Sie die Lizenzbedingungen.</p>
+<p>
+  Copyright © 2010-2014, Andreas Rudolph &amp; Walter Wagner
+  <a href="mailto:info@openestate.org">&lt;info@openindex.de&gt;</a>.
+  All Rights Are Reserved.
+</p>
+<p>
+  Dieses Modul wurde veröffentlicht unter den Bedingungen der
+  <a href="{module_url}gpl-3.0-standalone.html">GNU Public License v3</a>.
+  Mit Verwendung des Moduls akzeptieren Sie die Lizenzbedingungen.
+</p>
 ';
 
 // Meldungen

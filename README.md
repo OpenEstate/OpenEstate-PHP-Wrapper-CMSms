@@ -25,7 +25,7 @@ any frames.
 2.  Log in to administration of *CMS made simple* and open
     `Extensions` → `OpenEstate PHP-Wrapper` → `Module Preferences`. Enter path
     and URL, that points to the folder with the exported scripts.
-3.  The `Integration` tab shows, if path & URL is correctly configured.
+3.  The `Integration` tab shows, if the correct script path is configured.
 
 #### How to use the module?
 
@@ -75,6 +75,8 @@ Changelog
 
 ### 0.5
 
+-   improved help text in translation files
+-   don't use duplicated translation files
 -   made some syntax fixes
 
 ### 0.4.5
