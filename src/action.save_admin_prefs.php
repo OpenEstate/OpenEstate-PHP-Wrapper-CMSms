@@ -2,10 +2,10 @@
 /**
  * PHP-Wrapper für CMSms.
  * Eingaben im Administrationsbereich übernehmen.
- * $Id: action.save_admin_prefs.php 897 2011-06-15 23:54:58Z andy $
+ * $Id: action.save_admin_prefs.php 1705 2012-08-15 14:33:25Z andy $
  *
  * @author Andreas Rudolph & Walter Wagner
- * @copyright 2009-2011, OpenEstate.org
+ * @copyright 2009-2012, OpenEstate.org
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
