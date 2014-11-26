@@ -19,8 +19,10 @@
 if (!isset($gCms)) {
   exit;
 }
-//echo '<pre>'; print_r($_SERVER); echo '</pre>';
-//echo '<pre>'; print_r($config); echo '</pre>';
+
+//echo '<pre>' . print_r($_REQUEST, true) . '</pre>';
+//echo '<pre>' . print_r($_SERVER, true). '</pre>';
+//echo '<pre>' . print_r($config, true) . '</pre>';
 
 $cmsQueryVar = $config['query_var'];
 $cmsUrlRewriting = $config['url_rewriting'];
@@ -115,14 +117,14 @@ if (is_file(IMMOTOOL_BASE_PATH . 'immotool.php.lock')) {
 // keep wrapper settings in a global variable for further use
 $GLOBALS['openestate_wrapper_settings'] = $settings;
 
-// Script ermitteln
+// determine the script to load
 $wrap = (isset($_REQUEST['wrap']) && is_string($_REQUEST['wrap'])) ? $_REQUEST['wrap'] : null;
 $wrap = (!is_string($wrap) && isset($settings['wrap'])) ? $settings['wrap'] : $wrap;
 if ($wrap == 'expose') {
   $wrap = 'expose';
   $script = 'expose.php';
-  //echo '<pre>' . print_r($_REQUEST, true) . '</pre>'; return;
-  // Standard-Konfigurationswerte beim ersten Aufruf setzen
+
+  // set default configuration values on the first request of the page
   if (!isset($_REQUEST['wrap'])) {
     if (isset($settings['lang'])) {
       $_REQUEST[IMMOTOOL_PARAM_LANG] = $settings['lang'];
@@ -138,8 +140,8 @@ if ($wrap == 'expose') {
 else {
   $wrap = 'index';
   $script = 'index.php';
-  //echo '<pre>' . print_r($_REQUEST, true) . '</pre>'; return;
-  // Standard-Konfigurationswerte beim ersten Aufruf setzen
+
+  // set default configuration values on the first request of the page
   if (!isset($_REQUEST['wrap'])) {
     $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER_CLEAR] = '1';
     if (isset($settings['lang'])) {
@@ -151,8 +153,6 @@ else {
     if (isset($settings['mode'])) {
       $_REQUEST[IMMOTOOL_PARAM_INDEX_MODE] = $settings['mode'];
     }
-
-    // Standard-Sortierung
     if (isset($settings['order_by'])) {
       $order = $settings['order_by'];
       if (isset($settings['order_dir'])) {
@@ -165,14 +165,14 @@ else {
     }
   }
 
-  // Zurücksetzen der gewählten Filter
+  // clear filter selections, if this is explicitly selected
   if (isset($_REQUEST[IMMOTOOL_PARAM_INDEX_RESET])) {
     unset($_REQUEST[IMMOTOOL_PARAM_INDEX_RESET]);
     $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER] = array();
     $_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER_CLEAR] = '1';
   }
 
-  // vorgegebene Filter-Kriterien mit der Anfrage zusammenführen
+  // load configured filter criterias into the request
   if (!isset($_REQUEST['wrap']) || isset($_REQUEST[IMMOTOOL_PARAM_INDEX_FILTER])) {
     if (isset($settings['filter']) && is_array($settings['filter'])) {
       foreach ($settings['filter'] as $filter => $value) {
@@ -187,14 +187,14 @@ else {
   }
 }
 
-// Script ausführen
+// execute the script
 //echo 'wrap: ' . IMMOTOOL_BASE_PATH . $script;
 ob_start();
 include( IMMOTOOL_BASE_PATH . $script );
 $page = ob_get_contents();
 ob_end_clean();
 
-// Stylesheets
+// setup stylesheets for the generated output
 $setup = new immotool_setup();
 if (is_callable(array('immotool_myconfig', 'load_config_default'))) {
   immotool_myconfig::load_config_default($setup);
@@ -204,7 +204,7 @@ if (is_string($setup->AdditionalStylesheet) && strlen($setup->AdditionalStyleshe
   $stylesheets[] = $setup->AdditionalStylesheet;
 }
 
-// Ausgabe erzeugen
+// setup base URL and hidden parameters for the generated output
 $baseUrl = null;
 $hiddenParams = array();
 if ($cmsUrlRewriting == 'internal') {
@@ -220,4 +220,6 @@ else {
     $baseUrl .= '?' . $cmsQueryVar . '=' . $_REQUEST[$cmsQueryVar];
   }
 }
+
+// convert and return the script output
 echo immotool_functions::wrap_page($page, $wrap, $baseUrl, IMMOTOOL_BASE_URL, $stylesheets, $hiddenParams);

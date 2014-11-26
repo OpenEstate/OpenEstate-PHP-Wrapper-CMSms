@@ -77,6 +77,7 @@ Changelog
 
 -   improved help text in translation files
 -   don't use duplicated translation files
+-   translated any source code comments into English
 -   made some syntax fixes
 
 ### 0.4.5

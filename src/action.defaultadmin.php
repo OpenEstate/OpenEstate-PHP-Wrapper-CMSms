@@ -128,16 +128,19 @@ if ($environmentIsValid) {
   $orders = array();
   $defaultOrder = null;
   $orderNames = array();
-  if (!is_callable(array('immotool_functions', 'list_available_orders'))) {
-    // Mechanismus für ältere PHP-Exporte, um die registrierten Sortierungen zu verwenden
-    if (is_array($setupIndex->OrderOptions)) {
-      $orderNames = $setupIndex->OrderOptions;
-    }
-  }
-  else {
-    // alle verfügbaren Sortierungen verwenden
+
+  // get all available order classes
+  if (is_callable(array('immotool_functions', 'list_available_orders'))) {
     $orderNames = immotool_functions::list_available_orders();
   }
+
+  // get explicitly enabled order classes
+  // this mechanism is a fallback for older versions of the OpenEstate-PHP-Export,
+  // that don't support immotool_functions::list_available_orders()
+  else if (is_array($setupIndex->OrderOptions)) {
+    $orderNames = $setupIndex->OrderOptions;
+  }
+
   foreach ($orderNames as $key) {
     if (is_null($defaultOrder)) {
       $defaultOrder = $key;
@@ -215,8 +218,7 @@ $this->smarty->assign('module_url', $GLOBALS['config']['root_url'] . '/modules/'
 
 // Content defines and Form stuff for the admin
 $smarty->assign('start_form', $this->CreateFormStart($id, 'save_admin_prefs', $returnid));
-//$smarty->assign('input_allow_add',$this->CreateInputCheckbox($id, 'allow_add', 1,
-//   $this->GetPreference('allow_add','0')). $this->Lang('title_allow_add_help'));
+//$smarty->assign('input_allow_add', $this->CreateInputCheckbox($id, 'allow_add', 1, $this->GetPreference('allow_add', '0')) . $this->Lang('title_allow_add_help'));
 
 $smarty->assign('input_wrap_path', $this->CreateInputTextWithLabel(
         $id, 'wrap_path', $this->GetPreference('wrap_path', ''), 50, 255, 'style="width:75%;"', $this->Lang('title_wrap_path_help') . '<br/>'));
