@@ -18,7 +18,7 @@ to any website that supports PHP. Together with this module, the exported
 properties can be easily integrated into a *CMS made simple* based website without
 any frames.
 
-#### How to configure configure the module?
+#### How to configure the module?
 
 1.  Execute a PHP-export from [OpenEstate-ImmoTool](http://en.openestate.org/immotool/)
     to your webspace, where *CMS made simple* is installed.
@@ -48,7 +48,7 @@ PHP-Skripte auf die eigene Webseite exportiert werden. Mit Hilfe dieses Moduls
 kann dieser PHP-Export unkompliziert in eine auf *CMS made simple* basierende
 Webseite integriert werden.
 
-#### Wie konfiguriere ich dieses Modul?
+#### Wie konfiguriere ich das Modul?
 
 1.  Führen Sie einen PHP-Export aus [OpenEstate-ImmoTool](http://de.openestate.org/immotool/)
     auf Ihren Webspace durch, wo auch *CMS made simple* installiert wurde.
