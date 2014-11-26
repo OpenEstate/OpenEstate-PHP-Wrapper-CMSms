@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME="OpenEstatePhpWrapper"
-VERSION="0.5"
+VERSION="0.6-SNAPSHOT"
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 rm -Rf $PROJECT_DIR/release

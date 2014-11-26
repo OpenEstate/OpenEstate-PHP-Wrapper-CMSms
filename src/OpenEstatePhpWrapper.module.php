@@ -68,7 +68,7 @@ class OpenEstatePhpWrapper extends CMSModule {
    * @return string version number (can be something like 1.4rc1)
    */
   function GetVersion() {
-    return '0.5';
+    return '0.6-SNAPSHOT';
   }
 
   /**
