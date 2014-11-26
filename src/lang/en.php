@@ -141,4 +141,5 @@ $lang['order_desc'] = 'Descending';
 $lang['error_invalid_path'] = 'Please enter a valid server-path!';
 $lang['error_file_not_found'] = 'The required file \'%s\' was not in the server-path!';
 $lang['error_version_not_found'] = 'The script-version was not found!';
+$lang['error_current_page_not_found'] = 'Can\'t load the current page!';
 $lang['error_update_is_running'] = '<h3>The properties are currently updated!</h3><p>Please revisit this page after some minutes.</p>';

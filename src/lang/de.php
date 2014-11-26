@@ -143,4 +143,5 @@ $lang['order_desc'] = 'Absteigend';
 $lang['error_invalid_path'] = 'Bitte tragen Sie einen gültigen Skript-Pfad ein!';
 $lang['error_file_not_found'] = 'Die erforderlichte Datei \'%s\' befindet sich nicht im Skript-Pfad!';
 $lang['error_version_not_found'] = 'Die Skript-Version konnte nicht ermittelt werden!';
+$lang['error_current_page_not_found'] = 'Die aktuelle Seite konnte nicht ermittelt werden!';
 $lang['error_update_is_running'] = '<h3>Der Immobilienbestand wird momentan aktualisiert!</h3><p>Bitte besuchen Sie diese Seite in wenigen Minuten erneut.</p>';

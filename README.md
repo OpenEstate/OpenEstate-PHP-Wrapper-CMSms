@@ -75,6 +75,9 @@ Changelog
 
 ### 0.5
 
+-   Bugfix: Links inside wrapped content do not work, if pretty URL's are
+    disabled in *CMS made simple*.
+    (see [CMSms-Wiki about Pretty URL's](http://docs.cmsmadesimple.org/configuration/pretty-url))
 -   improved help text in translation files
 -   don't use duplicated translation files
 -   translated any source code comments into English
