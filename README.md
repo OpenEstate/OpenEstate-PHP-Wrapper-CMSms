@@ -1,4 +1,4 @@
-OpenEstate-PHP-Wrapper for CMSms 0.3
+OpenEstate-PHP-Wrapper for CMSms 0.4
 ====================================
 
 This module integrates [OpenEstate-PHP-Export](https://github.com/OpenEstate/OpenEstate-PHP-Export)
@@ -70,9 +70,18 @@ Webseite integriert werden.
     ein Formular, mit dessen Hilfe ein Smarty-Tag inkl. Parameter erzeugt werden
     kann.
 
-
 Changelog
 ---------
+
+### 0.4
+
+-   Show an error message on the website, if *OpenEstate-ImmoTool* is currently
+    exporting properties to the webspace.
+    (see [Bug-Tracker #594](http://tracker.openestate.org/view.php?id=594))
+-   Improved handling of search engine optimized URL's.
+    (see [CMSms-Wiki](http://wiki.cmsmadesimple.org/index.php/User_Handbook/Installation/Optional_Settings))
+    -   Take `$config['url_rewriting']` into account.
+    -   Take `$config['query_var']` into account.
 
 ### 0.3
 
