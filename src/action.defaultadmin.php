@@ -218,7 +218,8 @@ $this->smarty->assign('module_url', $GLOBALS['config']['root_url'] . '/modules/'
 
 // Content defines and Form stuff for the admin
 $smarty->assign('start_form', $this->CreateFormStart($id, 'save_admin_prefs', $returnid));
-//$smarty->assign('input_allow_add', $this->CreateInputCheckbox($id, 'allow_add', 1, $this->GetPreference('allow_add', '0')) . $this->Lang('title_allow_add_help'));
+//$smarty->assign('input_allow_add', $this->CreateInputCheckbox(
+//        $id, 'allow_add', 1, $this->GetPreference('allow_add', '0')) . $this->Lang('title_allow_add_help'));
 
 $smarty->assign('input_wrap_path', $this->CreateInputTextWithLabel(
         $id, 'wrap_path', $this->GetPreference('wrap_path', ''), 50, 255, 'style="width:75%;"', $this->Lang('title_wrap_path_help') . '<br/>'));
